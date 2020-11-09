@@ -15,7 +15,7 @@ node('staging'){
         }
         stage('Deploy Website')
         {
-            //sh 'sudo docker rm -f $(sudo docker ps -a -q)'
+                 sh 'sudo docker rm -f $(sudo docker ps -a -q)'
                 sh 'sudo docker run -it -p 84:80 -d biku8293/angular'
 
         }
