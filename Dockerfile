@@ -1,8 +1,9 @@
 FROM node:12.19.0-alpine as builder
-WORKDIR /app
-COPY . .
+WORKDIR /usr/src/app
+COPY package*.json ./
 RUN npm install
-RUN npm run build --prod
+COPY . .
+RUN npm run build
 
-FROM nginx:1.17.1-alpine
-COPY --from=builder /app/dist/docker-jenkins/ /usr/share/nginx/html
+FROM nginx:1.13.12-alpine
+COPY --from=builder /usr/src/app/dist/docker-jenkins/ /usr/share/nginx/html
