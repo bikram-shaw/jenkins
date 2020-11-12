@@ -24,7 +24,7 @@ node{
         }
         stage('Run Docker Container')
         {
-                 sh 'docker rm -f angular'
+                 //sh 'docker rm -f angular'
                 sh 'docker run -it -p 84:80 -d --name angular biku8293/angular'
                 echo 'Congrats! Website Successfully Deploy'
 
