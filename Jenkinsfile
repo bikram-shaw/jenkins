@@ -14,7 +14,7 @@ node{
                  echo 'Website Successfully Build'
 
         }
-        stage('Push Docker Image')
+        stage('Push Docker Image To Docker Hub')
         {
  withCredentials([string(credentialsId: 'docker_hub_pwd', variable: 'DockerHubPwd')]) {
      sh "docker login -u biku8293 -p ${DockerHubPwd}"
@@ -22,7 +22,7 @@ node{
 
                 sh 'docker push biku8293/angular'
         }
-        stage('Run Docker Container')
+        stage('Run Docker Container On Staging Server')
         {
                  sh 'docker rm -f angular'
                 sh 'docker run -it -p 84:80 -d --name angular biku8293/angular'
