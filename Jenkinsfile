@@ -10,7 +10,7 @@ node{
         stage('Build Docker Image')
         {
 
-                sh 'docker build -t biku8293/angular .'
+                sh 'sudo docker build -t biku8293/angular .'
                  echo 'Website Successfully Build'
 
         }
